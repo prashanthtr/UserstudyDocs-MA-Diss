@@ -1,0 +1,161 @@
+
+<html>
+<head>
+	<title>Live input</title>
+	<script src="../steller.js"></script>
+	<script src="../models.js"></script>
+	<script src="../webMIDIApi.js"></script>
+	<script src="../patternGen2.js" defer></script>
+	
+	<script>
+
+/*(function init(g){	
+  debugger;
+
+//;
+
+  }(window));*/
+  
+  
+/*  window.onload=function(){
+  	
+  };*/
+  
+
+
+</script>
+	
+</head>
+<body>
+
+
+
+<div id="main" name="main" title="Performance display" style="position: relative; left:400; top:100">
+
+<div id="controllers" name="controllers" title="Controllers for lead and accompaniment" style="position: absolute; left:-270;border:1px solid black">
+
+<!-- Controllers for lead and accompaniment-->
+
+<!-- Volume -->
+Lead volume &nbsp &nbsp &nbsp  <input type="range" min="0.6" max="3.0" step="0.4" id="lead_Volume"> </input> <br> </br>
+
+Accompaniment &nbsp <input type="range" min="0.6" max="2.0" step="0.4" id="acmp_Volume"> </input> <br> volume <br>
+
+Melody volume &nbsp <input type="range" min="0.6" max="3.0" step="0.4" id="mel_Volume">  </input> <br> </br>
+
+</div>
+
+<div id="master" name="master controller" title="Lead and Accompaniment display" style="position:absolute;left:0" >
+
+
+<textarea id="mridangam_patterns" rols="20" cols="20" >  </textarea> <br>
+Lead percussionist strokes <br> (tha, the, thom, nam, dhim, ki,<br> gumki) <br>
+
+<textarea id="kanjira_patterns" rols="20" cols="20" >  </textarea> <br>
+Second percussionist strokes <br>(tha, the gum or gumki) <br> 
+
+<textarea id="finalAccent" rols="20" cols="20" >  </textarea> <br>
+Final Accent <br> 
+
+
+<button id="midiInput"> Midi Input </button> 
+<button id="keyboardInput"> Keyboard Input </button> <br> 
+
+<button id="play"> Start playing </button> 
+<button id="stop"> Stop playing </button> <br> </br>
+
+<!-- Playback 
+<button id="play" > Play stroke </button>-->
+
+<input type="text" id="track" value="metro68"> Track </input> <br>
+<!-- Tempo -->
+<input type="text" id="tempo" value="68"> Tempo </input> <br> 
+<input hidden type="text" id="track_delay" value="12"> </input> <br> 
+
+</div>
+
+<div id="settings" name="Pattern settings" title="Settings for generic patterns" style="position: absolute; left:250;border:1px solid black">
+
+
+<!-- Note Interval 
+<input type="range" min="0" max="3" step="1" id="interval"> Stroke interval in a pattern </input> <br> </br> -->
+
+
+<!-- generic or not -->
+Generic <input type="range" min="1" max="4" step="1" id="genericcity">   </input> <br> to Nongeneric <br>
+
+<!-- Loudness Accent -->
+Loudness Accent <textarea id="loudnessAccent" rols="20" cols="20" > </textarea> <br> (eg: Accent at 1,4 and 5th notes -> [1,4,5] ) <br>
+
+
+<!-- num loudness-->
+Number of Loudness  <input type="range" min="0" max="7" step="1" id="numLoudnessAccents">  </input>  <br> accents <br>
+
+<!-- rhythm Accents  -->
+Rhythm accent <input type="text" id="rhythmAccent"> </input>  <br>
+(eg: Accent at 1,4 and 5th notes -> [1,4,5] ) <br>
+
+
+<!-- num rhythm acccent-->
+Number of rhythm <input type="range" min="0" max="7" step="1" id="numRhythmAccents">  <br> Accents </input>  <br>
+
+
+<!-- Speed accent  -->
+Speed Double Accent  <input type="text" id="speedAccent"> </input>  <br> 
+(eg: Accent at 1,4 and 5th notes -> [1,4,5] ) <br>
+
+
+<!-- numstrokes speed double-->
+Number of strokes <input type="range" min="0" max="7" step="1" id="numStrokes">  <br>speed double or quadruple </input>  
+
+
+<!-- offset-->
+Offset <input type="range" min="0" max="7" step="1" id="offset">  <br> </input>  
+
+
+
+<!-- Accent 
+<input type="range" min="1" max="5" step="2" id="accent"> Accent structure (1,3 or 5) </input> <br> </br> -->
+
+</div>
+
+<div id="settings" name="Enable/disable settings" title="Settings for generic patterns" style="position: absolute; left:-270;top:150;border:1px solid black">
+
+<br>
+
+Ta accent <input type="text" id="ta" value="0.4"> </input>  <br>
+Tum accent <input type="text" id="tum" value="0.2"> </input>  <br>
+Tumki <input type="text" id="tumki" value="0.25"> </input>  <br>
+Te accent <input type="text" id="te" value="0.1"> </input>  <br>
+Tate accent <input type="text" id="tate" value="0.4"> </input>  <br>
+Next note <input type="text" id="frontWeight" value="0.67"> </input>  <br>
+Prev note <input type="text" id="backWeight" value="0.33"> </input>  <br>
+
+
+
+<!-- generic or not 
+Accent enabled <input type="range" min="0" max="1" step="1" id="accentEnabled">  </input> <br>
+
+<!-- generic or not 
+Correct for  <input type="range" min="0" max="1" step="1" id="correctForDiction"> <br> Diction  </input> <br>
+
+<!-- generic or not 
+Change  <input type="range" min="0" max="1" step="1" id="accompChange"> <br> accompaniment <br>  </input> 
+
+<!-- pauses 
+Enable <input type="range" min="0" max="1" step="1" id="pauses"> <br> pauses  </input>  <br>
+
+<!-- tempo 
+Double  <input type="range" min="0" max="1" step="1" id="speed">  <br> speed  </input> -->
+
+</div>
+
+
+
+</div>
+
+
+</body>
+</html>
+
+

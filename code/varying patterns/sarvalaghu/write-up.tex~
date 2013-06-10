@@ -1,0 +1,15 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+Rhythmic beat patterns in Carnatic Music consist of 3 components: Diction, beat structure and intonation. Diction is the choice of strokes that form a beat pattern. Beat structure is the emphasis on certain strokes that gives a recognizable shape to the beat pattern. Intonation comprises of all the other things that performers do, like volume dynamics, controlling the bass or treble, tone of instrument etc. 
+
+
+The beat structure of generic patterns has to simple. 
+The note density of the generic patterns were 1 or 2 strokes played per clap. 
+If a single note was played, it was played exactly when the clap is played and if two 2 notes were played, one was played on the clap and other note was played exactly between 2 claps. Generic patterns also do not contain offbeat strokes.
+
+
+In terms of varying the parameters, beat structure plays a more important role than diction or intonation in defining the rhythmic pattern. The beat structure of the patterns could be varied along note density, by increasing the number of notes played per clap. 
+
+The pauses between the notes are currently in the ratio of 1:1. For every note played, a pause is also played. The ratio of the duration between the notes could be randomly varied to modify the patterns. 
