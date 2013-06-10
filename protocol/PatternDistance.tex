@@ -1,0 +1,58 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+
+have a rough idea of what is generic -- symmetry, accent structure, tala structure
+have a mathematical model that has boundary limits using which patterns can be classified as generic and non generic
+0 - 0.5  generic
+0.5 - 1.75 generic and non generic boundary
+1.75+ - non generic
+
+But which operation takes it how far away from genericcity -- 
+
+The distance measure between the pattern and the tala is measured as a function of:
+Accent structure  A: [0 0 1 0 1 1 0 0]
+Tala:             T: [1 0 0 0 1 0 0 0]
+Loudness sequence L: [s w w w s w s w] {Sum of Loudness + weight of individual beats}
+Speed Sequence    S: [1 1 1 1 [2,2] 1 1 1 1]
+
+Distance = Sum( (A[i] - T[i])* { weight1*(L[i] - T[i]) + weight2*(S[i] - T[i]) } ),
+
+In the above equation, speed and loudness have an effect on the distance only if they contribute to an accent structure at the beat. 
+Using the above equation, it is possible to find how far is a pattern from the tala. Patterns whose distance is 0, are close to the tala and do not
+obstruct the tala, there are patterns that are within 0-1.75 and >2 units of distance away from the tala. 
+
+What I am trying to find is, whether the patterns that are generic can be played in many situations in a concert ?
+
+There are patterns that have the properties of generic. The problem is that there is no formal model as to how to
+play these patterns, what patterns are correct and what are not.
+However, there are strong conventions as to certain patterns sound better in a situation and certain others
+are totally wrong. This creates a space of patterns that can be explored by percusssionists.
+What I have is a method to explore the space of patterns, using some of the actions the percussionists do: speed double, increase volume, stroke seq
+Any pattern, can be broken into a combination of these 3 factors and a combination of weights assigned to these is used to get the accent structure of the pattern
+The accent structure of the pattern is then compared to the tala, which is the baseline of rhythmic accompaniment in carnatic music.
+Certain patterns reinforce the accent structure of tala and certain patterns dont.
+What I am really trying to find out are patterns that reinforce the accent structure of the tala.
+using this, patterns that sound close to the tala both by the ear and mathematically can be generated.
+Now, it is possible to generate patterns that are mathematically away from the tala and see what are the situations
+that they can be used in.
+
+What are the variations of the tala that are acceptable as generic accompaniment
+Are patterns that are close to the tala/reinforce the tala as per the distance measure, generic accompaniment? -- which means do they answer all the properties  of generic accompaniment that I have mentioned above?
+Is there some point after which percussionists no longer think that the variations have property of generic accompaniment?
+Is that a mathematical point of departure between generic/ boundary and non generic?
+
+
+
+one thing I can try to do is to test these patterns.
+what I'm also trying to fix is the boundary values between generic and non generic. 
+
+Using this, it is then possible to reason out why certain patterns are generic and why certain others
+are non generic.
+
+Generate a pattern, loudness array, speed array
+Parse out the notes on the pattern
+get the weights due to individual notes in the pattern
+get the weights due to 2 played in the position of 1 beat
+get the accent structure

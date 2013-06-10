@@ -1,0 +1,89 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+
+Model of generic accompaniment:
+
+
+Generic: No accenting, accenting on 1 & 5 surely, maybe on 3 and/or 7
+
+Generic on the boundary: Same as generic, but increased number of rolls, feels more reactive to the lead percussionist/ melodic
+
+Non Generic on the boundary: accenting on 1 & 5 surely, maybe on 3 and/or 7 and maybe on other beats also( not very clear)
+
+Non generic: Highly tailored accompaniment, highly reactive to the lead percussionist in terms of intermixing rolls and farans etc
+
+
+A single pattern, that is often played in concerts(from transcriptions) was selected and four variations of the pattern were produced. This pattern was takadimi takajono. 
+
+In the first variation, generic patterns were created out of the pattern.
+
+In the second variation, the number strokes, in the generic space, that were speed doubled were increased to >2.  
+
+In the third variation, other kinds of accenting was followed, in which patterns that were reverses of each other were generated
+(Nadais have to be more carefully analyzed, but as of now this definiton should do)
+
+
+Highly tailored accompaniment selected from a transcription
+
+
+Test, evaluate and validate the model for analyzing/generating generic accompaniment patterns through experts. 
+
+\textbf{crisper definition of generic since it affects the claims that you make}
+
+Patterns that when reversed produce the same pattern too
+
+Generic accompaniment patterns are  those rhythm patterns that could be played as reasonably acceptable accompaniment in most situations. 
+Some of the features of generic patterns are that these patters do not obstruct the flow of the tala and highlight the \emph{tala}. Another feature is that these are  usually played by percussionists as a fallback patterns, when the percussionist does not know the song or is not able to predict what the singer is going to sing next{?} and improvise accordingly. One example of this kind of accompaniment which found in carnatic music literature, is that of timekeeping or \emph{sarvalaghu} patterns.
+
+Question: How do they not disturb the melody or what the lead player plays. Usually used as fallback patterns, when the percussionist does not know the song or is not able to predict what the singer is going to sing next{?}.
+
+Non-generic accompaniment are those accompaniment patterns that could be played as improvised variations of generic patterns. These consists of rhythm patterns that break flow of \emph{tala} or patterns that are specifically suited to the beat structure of the melody. One example of this kind of accompaniment is cross rhythms \emph{Nadais} or polyrhythms.
+
+
+In terms of the different sections of the study, the participants were asked to listen to a song and play sarvalaghu accompaniment to the song. The system played accompaniment as the lead percussionists improvised. The participants were asked to listen to the different kinds of accompaniment played by the system and classify it as generic, generic but on the boundary and non generic. Based on the participants remarks, 
+
+
+
+
+
+Hypothesis:
+
+Generic patterns should be okay for the percussionists throughout the playing as good accompaniment
+
+Reactions about generic patterns at boundary as patterns that were good at some point but 
+interferred with their intentions at other points
+
+Non-generic as highly tailored to the melody and completely contradicting with their intentions of playing
+
+
+Research questions:
+
+What extent can the different accents of the generic patterns varied to make them stay within the generic space 
+
+To what extent do percussionists tolerate generic patterns to move from generic space to non generic space
+
+
+
+
+Random:
+
+other extreme which is not often not followed in concerts, is to carefully stick to the accent structure of the melody or what the lead percussionist plays, in terms of accents and on strokes/ beat structure of the melody orsynchronize to that
+
+
+different trade offs: 
+
+When percussionist plays:
+
+Present them with generic patterns that are randomly selected from the model
+On the other hand, highly tailored kanjira accompaniment from a recording ( non generic case)
+does not really help to validate model right
+
+
+Present them with generic patterns that are randomly selected from the model
+non generic accompaniment 
+
+
+
+

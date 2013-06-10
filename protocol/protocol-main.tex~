@@ -1,0 +1,25 @@
+
+
+\documentclass[11pt]{article}
+\usepackage[hmargin={3.8cm,2.5cm},vmargin={2.5cm,2.5cm}]{geometry}      	% See geometry.pdf to learn the layout options. There are lots.
+\linespread{1}
+\geometry{paper=a4paper,papersize={21cm,29.7cm}}                  	 % ... or a4paper or a5paper or ... 
+
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}		% adding tables, diagrams
+%\onehalfspacing
+\usepackage{amssymb}		%support packages ...	
+\usepackage{verbatim}
+%\usepackage{hyperref}
+
+
+
+
+
+\begin{document}
+%\maketitle
+
+\textbf{\begin{center}Protocol\end{center}}
+\input{studyProtocol}
+
+\end{document}

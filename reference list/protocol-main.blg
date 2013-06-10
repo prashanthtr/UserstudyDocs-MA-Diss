@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: protocol-main.aux
+The style file: acm-sigchi.bst
+Database file #1: reference-list.bib
+Warning--empty journal in buchholz_cojive:_2007
+Warning--empty journal in gifford_ambidrum:_2006
+Warning--empty journal in hawryshkewich_beatback:_????
+Warning--empty journal in levitt_melody_1981
+Warning--empty journal in mulvihill_reni:_????
+Warning--empty journal in oliveira_ibt:_2010
+Warning--empty journal in rego_rhythm-controlled_????
+Warning--empty journal in van_nort_mapping_????
+Warning--empty booktitle in weinberg_leader-follower_2007
+You've used 58 entries,
+            2243 wiz_defined-function locations,
+            804 strings with 14613 characters,
+and the built_in function-call counts, 21686 in all, are:
+= -- 2163
+> -- 886
+< -- 0
++ -- 380
+- -- 308
+* -- 1187
+:= -- 3155
+add.period$ -- 167
+call.type$ -- 58
+change.case$ -- 324
+chr.to.int$ -- 0
+cite$ -- 67
+duplicate$ -- 1162
+empty$ -- 1734
+format.name$ -- 308
+if$ -- 4934
+int.to.chr$ -- 0
+int.to.str$ -- 58
+missing$ -- 58
+newline$ -- 285
+num.names$ -- 116
+pop$ -- 465
+preamble$ -- 1
+purify$ -- 268
+quote$ -- 0
+skip$ -- 994
+stack$ -- 0
+substring$ -- 1100
+swap$ -- 491
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 230
+warning$ -- 9
+while$ -- 161
+width$ -- 60
+write$ -- 557
+(There were 9 warnings)

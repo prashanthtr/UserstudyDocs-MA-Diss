@@ -1,0 +1,29 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+
+have a rough idea of what is generic -- symmetry, accent structure, tala structure
+have a mathematical model that has boundary limits using which patterns can be classified as generic and non generic
+0 - 0.5  generic
+0.5 - 1.75 generic and non generic boundary
+1.75+ - non generic
+
+But which operation takes it how far away from genericcity -- 
+
+
+The distance measure between the pattern and the tala is measured as a function of:
+Accent structure  A: [0 0 1 0 1 1 0 0]
+Tala:             T: [1 0 0 0 1 0 0 0]
+Loudness sequence L: [s w w w s w s w] {Sum of Loudness + weight of individual beats}
+Speed Sequence    S: [1 1 1 1 [2,2] 1 1 1 1]
+
+Distance = Sum( (A[i] - T[i])* { weight1*(L[i] - T[i]) + weight2*(S[i] - T[i]) } ),
+
+In the above equation, speed and loudness have an effect on the distance only if they contribute to an accent structure at the beat. 
+Using the above equation, it is possible to find 
+
+Generate a pattern
+Loudness array is also present
+Certain notes have a weight due to their pitch
+sometimes 2 notes are played which is a speed acccent

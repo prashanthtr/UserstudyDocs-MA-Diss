@@ -1,0 +1,123 @@
+
+In this document, I have tried to musically define generic accompaniment, outlined the way the generate/analyze rhythm sequences based on a set of actions(speed doubling, loudness, stroke selection) and some of the properties of generic accompaniment and proposed a distance measure(based on accents) to compute a distance between any arbitrary rhythm sequence and the tala. Using this distance measure, I formally define the ``genericcity'' of a rhythm pattern( as a number).
+
+\section{Defining Generic Accompaniment}
+
+Generic accompaniment is accompaniment that satisfies the following constraints :
+
+\begin{itemize}
+
+\item Reinforces the (accent)structure of the tala.
+\item Can be played as fall back rhythm pattern in many situations in a concert.
+\item Requires very less effort(in terms of stroke complexity, hand motion).
+\item Can be played with minimum/no attention to what others play.
+\item Not necessarily the greatest/best accompaniment is best suited to the context.
+\item Does not interfere with what other musicians play in the meanwhile.
+\item Accompaniment that musicians will not think as musically meaningless.
+
+\end{itemize}
+
+Out of these, I have taken the first point, reinforcing tala structure, to generate rhythm patterns. My hypothesis is that the rhythms that are generated using this constraint also satisfy the other constraints of generic accompaniment. I am testing this hypothesis with experts.
+
+\section{Generating and Analyzing rhythm patterns}
+
+In terms of analyzing/generating accompaniment patterns that fit the constraint, I have identified 4 parameters that are useful.  These parameters are based on observing the different actions that percussionists do to vary patterns while playing. The parameters are:
+
+\begin{itemize}
+
+\item Loudness(intensity) of hits, 
+\item Speed doubling certain strokes 
+\item Sequence of strokes
+\item Changing time signature ( omitted for this study)
+
+\end{itemize}
+
+A given pattern is analyzed based on these parameters and their weights are used to compute the strength of each beat in the rhythm pattern. Lets look at each of these parameters in detail.
+
+\subsection{Loudness of hits}
+
+The loudness of the hits is corresponds to the amplitude level of the hits. The amplitude of the hits could range between 0 to 1. There are 3 amplitude values, ``s, w and 0''.
+
+\begin{itemize}
+
+\item  ``s'' corresponds to the note played by maximum amplitude of 1.0.
+
+\item 0 corresponds to a rest or a pause, in which the note is played with 0 amplitude ( equivalent to not playing the note)
+
+\item ``w'' corresponds to the note played in between maximum and 0 amplitude. The value of ``w'' is currently fixed as 0.5.
+
+\end{itemize}
+
+The result of the loudness accent is a sequence of ``s,w and 0s'', showing the amplitude level of each of the hits in a sequence. 
+
+An example sequence: ``[s w w w s 0 0 w]''
+
+\subsection{Speed doubling}
+
+In speed doubling, 2 notes are played for the duration of 1 beat and this contributes to the accent structure. In speed quadrupling, 4 notes are played for 1 beat.
+
+For example, in the ``1,1,1,1,1,1,1'', each of the 1's scales the tempo at which each stroke of a pattern is played. 
+If the 1st and the 5th strokes in the pattern are doubled, the resultant sequence is, ``[2,2],1,1,1,[2,2],1,1,1''. The 2's in the sequence means that the strokes are played at double speed.
+
+\subsection{Diction}
+
+The sequence of hits in the pattern also contributes to the accent structure. The high note ``ta'', intonated note ``tumki'' and the speed doubled note ``tate'' have stronger influence on the accent structure than the bass note ``tum''(0.2). The difference in this level also adds to the accent structure. ``ta'' and ``te'' are represented by a ``T'' and ``tum'' and ``tumki'' are represented by a ``t''. The relative strengths of the notes are:
+
+\begin{itemize}
+\item ``ta'', ``tate'' - 0.4
+\item ``tumki'' - 0.3 ( 3/4 as strong as ta)
+\item ``tum'' - 0.2 ( 1/2 as strong as ta)
+\end{itemize}
+
+\subsection{Constructing the accent Structure}
+
+The weights at each beat is added together to compute a sequence of weights with relative strength of the beat. The relative strengths are then used to construct a accent structure, which is represented as a binary sequence, with 1 corresponding to a strong beat and 0 corresponding to a weak beats.
+
+For example, consider the following sequences of loudness, speed doubling and diction.
+
+loudness    : [  1,  0.5, 0.5, 0.5,  1,   0, 0 0.5] \\
+Speed double: [[2,2], 1,   1,   1, [2,2], 1, 1, 1 ] \\
+Diction     : [  Tt   t    t    T    Tt   t  t  T ] \\
+AccentStruct: [  ?    ?    ?    ?    ?    ?  ?  ? ]  \\
+
+Accent structure is computed by the formula:
+
+\textbf{Weighted accent structure[current-Stroke]} = \\
+
+ \emph{1* loudness[current-Stroke] - 0.25* loudness[previous-Stroke] - 0.75*loudness[next-Stroke]} + 
++ \emph{weight of (speed Double)} +
+\emph{ weight of the stroke (``Ta'', ``tumki'', ``tum'') }
+
+The weighted accent structure of the above sequence is: \\ \textbf{[1.1, -0.363, -0.067, -0.637, 1.402, -0.528, -0.335, -0.572]}
+ 
+The binary accent structure is obtained from this by comparing triplets of beats and assigning the accent to the maximum weighted value, is \\ \textbf{[1, 0, 1, 0, 1, 0, 1, 0]}.
+
+Once the accent structure is obtained, it is then compared with the tala structure to measure how close or far away the pattern is, in relation to the tala structure. The next section details this distance measure and how the distance is a measure of the relation between the rhythm pattern and tala.
+
+\subsection{ Computing the Distance between rhythm pattern and the Tala}
+
+The distance measure between the pattern and the tala is measured as a function of:
+Accent structure  A: [0 0 1 0 1 1 0 0] \\
+Tala:             T: [1 0 0 0 1 0 0 0] \\
+Loudness sequence L: [s w w w s w s w] (\emph{Sum of Loudness accent + weight of individual beats}) \\
+Speed Sequence    S: [1 1 1 1 [2,2] 1 1 1 1] \\
+
+The distance is computed as: \\
+Distance = \emph{Sum( \textbf{(A[i] - T[i])} * \textbf{( weight1*(L[i] - T[i]) + weight2*(S[i] - T[i])}})  ,
+
+In the above equation, speed and loudness have an effect on the distance only if they contribute to an accent structure at the beat. 
+
+\section{Genericcity of accompaniment}
+
+Based on the distance measure, rhythm patterns are classified into three:
+
+\begin{enumerate}
+
+\item \textbf{Generic Accompaniment:} Patterns whose distance measure is between \textbf{0-0.5}. These patterns are close to the tala and likely to be the generic accompaniment that we are searching for.
+\item  \textbf{Boundary between Generic and Non generic:} Patterns whose distance measure is between \textbf{0.5-1.75}. These patterns are likely to form the boundary between generic and non generic. Some of these patterns had a complementary accent structure to the tala structure.
+\item \textbf{Non Generic:} Patterns whose distance measure is greater than \textbf{1.75} units are likely to fall in the non generic region. They have no defined relation with the tala structure.
+
+\end{itemize}
+
+
+

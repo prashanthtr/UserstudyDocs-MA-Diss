@@ -1,0 +1,44 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+Explaining to Kevin and Lonce what I am doing:
+
+Generic accompaniment is accompaniment that satisfies the following constraints :
+
+\begin{itemize}
+
+\item Reinforces the accent structure of the tala.
+\item Can be played as fall back rhythm pattern in many situations in a concert.
+\item Requires very less effort(in terms of stroke complexity, hand motion).
+\item Can be played with minimum/no attention to what others play.
+\item Not necessarily the greatest/best accompaniment is best suited to the context.
+\item Does not interfere with what other musicians play in the meanwhile.
+\item Accompaniment that musicians will not think as musically meaningless.
+
+\end{itemize}
+
+Out of these, I have taken the first point, reinforcing tala structure, to generate rhythm patterns that fit the constraint. My hypothesis is that the rhythms that are generated using this constraint also satisfy the other constraints of generic accompaniment. I am testing this hypothesis with experts.
+
+Generate rhythm patterns 
+
+-- sequence of actions possible 
+-- assigning weights to each of those factors
+
+\subsection{ Distance measure between rhythm pattern and the Tala}
+
+The distance measure between the pattern and the tala is measured as a function of:
+Accent structure  A: [0 0 1 0 1 1 0 0]
+Tala:             T: [1 0 0 0 1 0 0 0]
+Loudness sequence L: [s w w w s w s w] {Sum of Loudness + weight of individual beats}
+Speed Sequence    S: [1 1 1 1 [2,2] 1 1 1 1]
+
+Distance = Sum( (A[i] - T[i])* { weight1*(L[i] - T[i]) + weight2*(S[i] - T[i]) } ),
+
+In the above equation, speed and loudness have an effect on the distance only if they contribute to an accent structure at the beat. 
+Using the above equation, it is possible to find how far is a pattern from the tala. Patterns whose distance is 0, are close to the tala and do not
+obstruct the tala, there are patterns that are within 0-1.75 and >2 units of distance away from the tala. 
+
+
+
+

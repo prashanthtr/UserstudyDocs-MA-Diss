@@ -1,0 +1,71 @@
+
+\section{Analyzing Accompaniment patterns}
+
+In terms of analyzing/generating accompaniment patterns that fit criteria for generic accompaniment, I have identified 3 parameters that are useful. These patterns are used to analyze a rhythm pattern and construct an accent structure. The accent structure is tested for genericcity and is used to also how close/ far away is the pattern from genericcity. The parameters based on which accompaniment patterns are analyzed, are:
+
+\begin{itemize}
+
+\item Loudness(increasing/decreasing) of hits, 
+\item Speed doubling certain strokes and Loudness accent
+\item Sequence of strokes
+
+\end{itemize}
+
+Each of these contribute a weight to the accent structure. A given pattern is analyzed based on these parameters and their weights are used to compute the accent structure. Lets see how the different parameters weight the accent structure.
+
+\subsection{Loudness of hits}
+
+The loudness of the hits is corresponds to the amplitude level of the hits. The amplitude of the hits could range between 0 to 1. There are 3 amplitude values, ``s, w and 0''.
+
+\begin{itemize}
+
+\item  ``s'' corresponds to the note played by maximum amplitude of 1.0.
+
+\item 0 corresponds to a rest or a pause, in which the note is played with 0 amplitude ( equivalent to not playing the note)
+
+\item ``w'' corresponds to the note played in between maximum and 0 amplitude. The value of ``w'' is currently fixed as 0.5.
+
+\end{itemize}
+
+The result of the loudness accent is a sequence of ``s,w and 0s'', showing the amplitude level of each of the hits in a sequence. 
+
+An example sequence: ``[s w w w s 0 0 w]''
+
+\subsection{Speed doubling}
+
+In speed doubling, 2 notes are played for the duration of 1 beat and this contributes to the accent structure. In speed quadrupling, 4 notes are played for 1 beat.
+
+For example, in the ``1,1,1,1,1,1,1'', each of the 1's scales the tempo at which each stroke of a pattern is played. 
+If the 1st and the 5th strokes in the pattern are doubled, the resultant sequence is, ``[2,2],1,1,1,[2,2],1,1,1''. The 2's in the sequence means that the strokes are played at double speed.
+
+\subsection{Diction}
+
+The sequence of hits in the pattern also contributes to the accent structure. The high note ``ta'' has a stronger influence on the accent structure than the bass note ``tum''. The difference in this level also adds to the accent structure. ``ta'' is represented by a ``T'' and ``tum'' is represented by a ``t''.
+
+
+\section{Constructing the accent Structure}
+
+The accent structure is constructed by adding the weighted value of the different parameters at same stroke positions.
+
+For example, consider the following sequences of loudness, speed doubling and diction.
+
+loudness    : [  1,  0.5, 0.5, 0.5,  1,   0, 0 0.5] \\
+Speed double: [[2,2], 1,   1,   1, [2,2], 1, 1, 1 ] \\
+Diction     : [  Tt   t    t    T    Tt   t  t  T ] \\
+AccentStruct: [  ?    ?    ?    ?    ?    ?  ?  ? ]  \\
+
+Accent structure is computed by the formula:
+
+\textbf{Weighted accent structure[currentStroke]} = \\
+
+ \emph{1* loudness[currentStroke] - 0.25* loudness[previousStroke] - 0.75*loudness[nextStroke]} + 
+\emph{0.4 ( if the stroke is speed doubled) +} 
+\emph{0.4 (or) 0.2 (depending on whether is stroke is ``Ta'' or ``tum'') }
+
+The weighted accent structure of the above sequence is:  \textbf{[1.1, -0.363, -0.067, -0.637, 1.402, -0.528, -0.335, -0.572]}
+ 
+
+The binary accent structure is obtained from this by comparing triplets of beats and assigning the accent to the maximum weighted value, is \textbf{[1, 0, 1, 0, 1, 0, 1, 0]}.
+
+This accent structure is compared with genercicity condition to check it fits/violates the condition. The mean square difference between the pattern's accent strucutre and tala's accent structure is used to compute how close/far away is it from the tala.
+

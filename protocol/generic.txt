@@ -1,0 +1,28 @@
+
+
+Test, evaluate and validate the model for analyzing/generating generic accompaniment patterns through experts. 
+
+Generic accompaniment patterns are  those rhythm patterns that could be played as reasonably acceptable accompaniment in most situations. Some of the features of generic patterns are that these patters do not obstruct the flow of the tala and highlight the \emph{tala}. Another feature is that these are  usually played by percussionists as a fallback patterns, when the percussionist does not know the song or is not able to predict what the singer is going to sing next{?} and improvise accordingly. One example of this kind of accompaniment which found in carnatic music literature, is that of timekeeping or \emph{sarvalaghu} patterns.
+
+Non-generic accompaniment are those accompaniment patterns that could be played as improvised variations of generic patterns. These consists of rhythm patterns that break flow of \emph{tala} or patterns that are specifically suited to the beat structure of the melody. One example of this kind of accompaniment is cross rhythms (\emph{Nadais}) or polyrhythms, or mixing polyrhythms and rolls.
+
+
+Model of generic accompaniment:
+
+Generic: Accenting such that same pattern repeats when the accents are reversed 
+
+Generic on the boundary: Same as generic, but increased number of rolls. Less generic because, the rolls can played only when lead percussionist starts playing the rolls.
+
+Non Generic on the boundary: Pattern is not same as its reverse, number of rolls same as generic. 
+
+Non generic: Highly tailored accompaniment, highly reactive to the lead percussionist in terms of intermixing generic patterns and rolls.
+
+A single pattern, that is often played in concerts(from transcriptions) was selected and four variations of the pattern were produced. This pattern was takadimi takajono. 
+
+In the first variation, generic patterns were created out of the pattern. generic patterns are the same when they are reversed.
+
+In the second variation, the number strokes, in the generic space, that were speed doubled were increased to >2.  
+
+In the third variation, number of strokes was less than 2, however, the accompaniment violated the condition of being same as its reverse
+
+Highly tailored accompaniment selected from a transcription.

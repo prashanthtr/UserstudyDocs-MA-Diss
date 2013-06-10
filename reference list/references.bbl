@@ -1,0 +1,349 @@
+\begin{thebibliography}{10}
+
+\bibitem{assayag_omax_2006}
+Assayag, G., Bloch, G., Chemillier, M., Cont, A., and Dubnov, S.
+\newblock Omax brothers: a dynamic yopology of agents for improvization
+  learning.
+\newblock In {\em Proceedings of the 1st {ACM} workshop on Audio and music
+  computing multimedia} (2006), 125–132.
+
+\bibitem{buchholz_cojive:_2007}
+Buchholz, J., Lee, E., Klein, J., Borchers, J., et~al.
+\newblock {coJIVE:} a system to support collaborative jazz improvisation.
+
+\bibitem{collins_ll:_2011}
+Collins, N.
+\newblock {\em {LL:} Listening and Learning in an Interactive Improvisation
+  System}.
+\newblock University of Sussex, unpublished, 2011.
+
+\bibitem{collins_towards_2006}
+Collins, N.~M.
+\newblock {\em Towards autonomous agents for live computer music: Realtime
+  machine listening and interactive music systems}.
+\newblock PhD thesis, Citeseer, 2006.
+
+\bibitem{dahia_using_2004}
+Dahia, M., Santana, H., Trajano, E., Ramalho, G., Sandroni, C., and Cabral, G.
+\newblock Using patterns to generate rhythmic accompaniment for guitar.
+\newblock {\em {CEP} 50732\/} (2004), 970.
+
+\bibitem{davies_beat_2005}
+Davies, M.~E., Brossier, P.~M., and Plumbley, M.~D.
+\newblock Beat tracking towards automatic musical accompaniment.
+\newblock In {\em Proceedings of the Audio Engineering Society 118th
+  convention, Barcelona, Spain} (2005).
+
+\bibitem{franccois_visual_2007}
+Franccois, A. R.~J., Chew, E., and Thurmond, D.
+\newblock Visual feedback in performer-machine interaction for musical
+  improvisation.
+\newblock In {\em Proceedings of the 7th international conference on New
+  interfaces for musical expression} (2007), 277–280.
+
+\bibitem{franccois_mimi4x:_2010}
+Franccois, A. R.~J., Schankler, I., and Chew, E.
+\newblock Mimi4x: An interactive audio-visual installation for high-level
+  structural improvisation.
+\newblock In {\em Multimedia and Expo ({ICME)}, 2010 {IEEE} International
+  Conference on} (2010), 1618–1623.
+
+\bibitem{francois_performer-centered_2011}
+François, A. R.~J., Chew, E., and Thurmond, D.
+\newblock Performer-centered visual feedback for human-machine improvisation.
+\newblock {\em Computers in Entertainment 9}, 3 (Nov. 2011), 1--13.
+
+\bibitem{gifford_beyond_2011}
+Gifford, T., and Brown, A.~R.
+\newblock Beyond reflexivity: Mediating between imitative and intelligent
+  action in an interactive music system.
+\newblock In {\em 25th {BCS} Conference on Human-Computer Interaction} (2011).
+
+\bibitem{gifford_ambidrum:_2006}
+Gifford, T.~M., and Brown, A.~R.
+\newblock The ambidrum: Automated rhythmic improvisation.
+
+\bibitem{gifford_anticipatory_2010}
+Gifford, T.~M., and Brown, A.~R.
+\newblock Anticipatory timing in algorithmic rhythm generation.
+\newblock In {\em Proceedings of the Australasian Computer Music Conference
+  2010} (2010), 21–28.
+
+\bibitem{goto_audio-based_2001}
+Goto, M.
+\newblock An audio-based real-time beat tracking system for music with or
+  without drum-sounds.
+\newblock {\em Journal of New Music Research 30}, 2 (2001), 159–171.
+
+\bibitem{goto_beat_1996}
+Goto, M., and Muraoka, Y.
+\newblock Beat tracking based on multiple-agent architecture—a real-time beat
+  tracking system for audio signals.
+\newblock In {\em Proceedings of the Second International Conference on
+  Multiagent Systems} (1996), 103–110.
+
+\bibitem{goto_music_1998}
+Goto, M., and Muraoka, Y.
+\newblock Music understanding at the beat level: Real-time beat tracking for
+  audio signals.
+\newblock {\em Computational Auditory Scene Analysis\/} (1998), 157–176.
+
+\bibitem{hawryshkewich_beatback:_????}
+Hawryshkewich, A., Pasquier, P., and Eigenfeldt, A.
+\newblock Beatback: A real-time interactive percussion system for rhythmic
+  practise and exploration.
+
+\bibitem{hoffman_shimon:_2010}
+Hoffman, G., and Weinberg, G.
+\newblock Shimon: an interactive improvisational robotic marimba player.
+\newblock In {\em Proceedings of the 28th of the international conference
+  extended abstracts on Human factors in computing systems} (2010),
+  3097–3102.
+
+\bibitem{hoffman_interactive_2011}
+Hoffman, G., and Weinberg, G.
+\newblock Interactive improvisation with a robotic marimba player.
+\newblock {\em Autonomous Robots 31}, 2-3 (June 2011), 133--153.
+
+\bibitem{hsu_using_2005}
+Hsu, W.
+\newblock Using timbre in a computer-based improvisation system.
+\newblock In {\em Proceedings of the {ICMC}} (2005), 5–9.
+
+\bibitem{jensen_real-time_2004}
+Jensen, K., and Andersen, T.
+\newblock Real-time beat {EstimationUsing} feature extraction.
+\newblock {\em Computer Music Modeling and Retrieval\/} (2004), 155–178.
+
+\bibitem{kitahara_ism:_2005}
+Kitahara, T., Ishida, K., and Takeda, M.
+\newblock ism: improvisation supporting systems with melody correction and key
+  vibration.
+\newblock In {\em Entertainment Computing-{ICEC} 2005}. Springer, 2005,
+  315–327.
+
+\bibitem{kitani_improvgenerator:_2010}
+Kitani, K.~M., and Koike, H.
+\newblock Improvgenerator: Online grammatical induction for on-the-fly
+  improvisation accompaniment.
+\newblock In {\em Proceedings of the 2010 Conference on New Interfaces for
+  Musical Expression ({NIME} 2010)} (2010).
+
+\bibitem{krakowski_pandeiro_2009}
+Krakowski, S., Velho, L., Pachet, F., and Sony, C. S.~L.
+\newblock Pandeiro funk: experiments on rhythm-based interaction.
+\newblock In {\em {ACM} {SIGGRAPH} 2009: Music \& Audio} (2009), 1.
+
+\bibitem{levitt_melody_1981}
+Levitt, D.~A.
+\newblock A melody description system for jazz improvisatiion - thesis.
+
+\bibitem{lewis_too_2000}
+Lewis, G.~E.
+\newblock Too many notes: Computers, complexity and culture in voyager.
+\newblock {\em Leonardo Music Journal\/} (2000), 33–39.
+
+\bibitem{lim_robot_2010}
+Lim, A., Mizumoto, T., Cahier, L.-K., Otsuka, T., Takahashi, T., Komatani, K.,
+  Ogata, T., and Okuno, H.~G.
+\newblock Robot musical accompaniment: integrating audio and visual cues for
+  real-time synchronization with a human flutist.
+\newblock In {\em Intelligent Robots and Systems ({IROS)}, 2010 {IEEE/RSJ}
+  International Conference on} (2010), 1964–1969.
+
+\bibitem{mizumoto_robot_2008}
+Mizumoto, T., Takeda, R., Yoshii, K., Komatani, K., Ogata, T., and Okuno, H.~G.
+\newblock A robot listens to music and counts its beats aloud by separating
+  music from counting voice.
+\newblock In {\em Intelligent Robots and Systems, 2008. {IROS} 2008. {IEEE/RSJ}
+  International Conference on} (2008), 1538–1543.
+
+\bibitem{morris_exposing_2008}
+Morris, D., Simon, I., and Basu, S.
+\newblock Exposing parameters of a trained dynamic model for interactive music
+  creation.
+\newblock In {\em Proceedings of {AAAI}} (2008).
+
+\bibitem{mulvihill_reni:_????}
+Mulvihill, D.
+\newblock {RENI:} real time beat tracking and metrical analysis.
+
+\bibitem{murata_beat-tracking_2008}
+Murata, K., Nakadai, K., Takeda, R., Okuno, H.~G., Torii, T., Hasegawa, Y., and
+  Tsujino, H.
+\newblock A beat-tracking robot for human-robot interaction and its evaluation.
+\newblock In {\em Humanoid Robots, 2008. Humanoids 2008. 8th {IEEE-RAS}
+  International Conference on} (2008), 79–84.
+
+\bibitem{murata_robot_2008}
+Murata, K., Nakadai, K., Yoshii, K., Takeda, R., Torii, T., Okuno, H.~G.,
+  Hasegawa, Y., and Tsujino, H.
+\newblock A robot singer with music recognition based on real-time beat
+  tracking.
+\newblock {\em Proc. of {ISMIR} {2008–Session} {2b–Music} Recognition and
+  Visualization\/} (2008), 199–204.
+
+\bibitem{nikolaidis_playing_2010}
+Nikolaidis, R., and Weinberg, G.
+\newblock Playing with the masters: A model for improvisatory musical
+  interaction between robots and humans.
+\newblock In {\em {RO-MAN}, 2010 {IEEE}} (2010), 712–717.
+
+\bibitem{oliveira_ibt:_2010}
+Oliveira, J.~L., Gouyon, F., Martins, L.~G., and Reis, L.~P.
+\newblock {IBT:} a real-time tempo and beat tracking system.
+
+\bibitem{pachet_continuator:_2002}
+Pachet, F.
+\newblock The continuator: Musical interaction with style.
+\newblock In {\em Proceedings of}, vol.~1001 (2002), 211–218.
+
+\bibitem{pachet_interacting_2002}
+Pachet, F.
+\newblock Interacting with a musical learning system: The continuator.
+\newblock {\em Music and Artificial Intelligence\/} (2002), 103–108.
+
+\bibitem{pan_robot_2010}
+Pan, Y., Kim, M.~G., and Suzuki, K.
+\newblock A robot musician interacting with a human partner through initiative
+  exchange.
+\newblock In {\em Proceedings of the Conference on New Interfaces for Musical
+  Expression ({NIME’10)}} (2010), 166–169.
+
+\bibitem{pardo_modeling_2005}
+Pardo, B., and Birmingham, W.
+\newblock Modeling form for on-line following of musical performances.
+\newblock In {\em {PROCEEDINGS} {OF} {THE} {NATIONAL} {CONFERENCE} {ON}
+  {ARTIFICIAL} {IN℡LIGENCE}}, vol.~20 (2005), 1018.
+
+\bibitem{rego_rhythm-controlled_????}
+Rego, S. K.~C.
+\newblock Rhythm-controlled automata applied to musical improvisation.
+
+\bibitem{rowe_aesthetics_1999}
+Rowe, R.
+\newblock The aesthetics of interactive music systems.
+\newblock {\em Contemporary music review 18}, 3 (1999), 83–87.
+
+\bibitem{simon_mysong:_2008}
+Simon, I., Morris, D., and Basu, S.
+\newblock {MySong:} automatic accompaniment generation for vocal melodies.
+\newblock In {\em Proceedings of the twenty-sixth annual {SIGCHI} conference on
+  Human factors in computing systems} (2008), 725–734.
+
+\bibitem{stark_performance_2012}
+Stark, A.~M., and Plumbley, M.~D.
+\newblock Performance following: Real-time prediction of musical sequences
+  without a score.
+\newblock {\em {IEEE} Transactions on Audio, Speech, and Language Processing
+  20}, 1 (Jan. 2012), 190--199.
+
+\bibitem{taki_real-time_2000}
+Taki, Y., Suzuki, K., and Hashimoto, S.
+\newblock Real-time initiative exchange algorithm for interactive music system.
+\newblock In {\em Proceedings da Internacional Computer Music Conference
+  ({ICMC)}} (2000).
+
+\bibitem{toiviainen_real-time_2001}
+Toiviainen, P.
+\newblock Real-time recognition of improvisations with adaptive oscillators and
+  a recursive bayesian classifier.
+\newblock {\em Journal of New Music Research 30}, 2 (2001), 137–147.
+
+\bibitem{van_nort_mapping_????}
+Van~Nort, D., Braasch, J., and Oliveros, P.
+\newblock Mapping to musical actions in the {FILTER} system.
+
+\bibitem{van_nort_system_2009}
+Van~Nort, D., Braasch, J., and Oliveros, P.
+\newblock A system for musical improvisation combining sonic gesture
+  recognition and genetic algorithms.
+\newblock In {\em Proceedings of Sound and Music Computing Conference, Porto,
+  Portugal} (2009).
+
+\bibitem{verma_real-time_2012}
+Verma, P., and Rao, P.
+\newblock Real-time melodic accompaniment system for indian music using
+  {TMS320C6713}.
+\newblock In {\em {VLSI} Design ({VLSID)}, 2012 25th International Conference
+  on} (2012), 119–124.
+
+\bibitem{walker_improvisationbuilder:_1992}
+Walker, W., and Hcbcl, K.
+\newblock {ImprovisationBuilder:} improvisation as conversation william walker,
+  kurt hebel, salvatore martirano, carla scaletti {CERL} sound group \& school
+  of {Music/University} of illinois 252 engineering research laboratory/103 s.
+  {Mathews/Urbana} {IL} 61801-{2977/USA} telephone:(217) 333-0766 email:
+  walker@ cs. uiuc. edu.
+\newblock In {\em Proceedings of the... International Computer Music
+  Conference} (1992), 190.
+
+\bibitem{walker_computer_1997}
+Walker, W.~F.
+\newblock A computer participant in musical improvisation.
+\newblock In {\em Proceedings of the {SIGCHI} conference on Human factors in
+  computing systems} (1997), 123–130.
+
+\bibitem{weinberg_jamaa_2006}
+Weinberg, G., and Driscoll, S.
+\newblock Jam’aa – a middle eastern percussion ensemble for human and
+  robotic players.
+\newblock In {\em Proceedings of the {SIGCHI} conference on Human Factors in
+  computing systems} (2006), 1229–1232.
+
+\bibitem{weinberg_robot-human_2006}
+Weinberg, G., and Driscoll, S.
+\newblock Robot-human interaction with an anthropomorphic percussionist.
+\newblock In {\em Proceedings of the {SIGCHI} conference on Human Factors in
+  computing systems} (2006), 1229–1232.
+
+\bibitem{weinberg_toward_2006}
+Weinberg, G., and Driscoll, S.
+\newblock Toward robotic musicianship.
+\newblock {\em Computer Music Journal 30}, 4 (2006), 28–45.
+
+\bibitem{weinberg_design_2007}
+Weinberg, G., and Driscoll, S.
+\newblock The design of a robotic marimba player: introducing pitch into
+  robotic musicianship.
+\newblock In {\em Proceedings of the 7th international conference on New
+  interfaces for musical expression} (2007), 228–233.
+
+\bibitem{weinberg_leader-follower_2007}
+Weinberg, G., and Driscoll, S.
+\newblock A leader-follower turn-taking model incorporating beat detection in
+  musical human-robot interaction.
+\newblock {ACM} Press (2007), 97.
+
+\bibitem{weinberg_musical_2005}
+Weinberg, G., Driscoll, S., and Parry, M.
+\newblock Musical interactions with a perceptual robotic percussionist.
+\newblock In {\em Robot and Human Interactive Communication, 2005. {ROMAN}
+  2005. {IEEE} International Workshop on} (2005), 456–461.
+
+\bibitem{weinberg_real-time_2008}
+Weinberg, G., Godfrey, M., Rae, A., and Rhoads, J.
+\newblock A real-time genetic algorithm in human-robot musical improvisation.
+\newblock {\em Computer Music Modeling and Retrieval. Sense of Sounds\/}
+  (2008), 351–359.
+
+\bibitem{weinberg_interactive_2009}
+Weinberg, G., Raman, A., and Mallikarjuna, T.
+\newblock Interactive jamming with shimon: a social robotic musician.
+\newblock In {\em Proceedings of the 4th {ACM/IEEE} international conference on
+  Human robot interaction} (2009), 233–234.
+
+\bibitem{young_nn_2008}
+Young, M.
+\newblock {NN} music: Improvising with a {‘Living’Computer}.
+\newblock {\em Computer Music Modeling and Retrieval. Sense of Sounds\/}
+  (2008), 337–350.
+
+\bibitem{young_clap-along:_2010}
+Young, M.~W., Bown, O., et~al.
+\newblock Clap-along: A negotiation strategy for creative musical interaction
+  with computational systems.
+\newblock In {\em Proceedings of the International Conference on Computational
+  Creativity 2010} (2010), 215–222.
+
+\end{thebibliography}
