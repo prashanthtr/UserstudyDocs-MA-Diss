@@ -1,0 +1,65 @@
+
+<html>
+<head>
+	<title>Live input</title>
+	<script src="../steller.js"></script>
+	<script src="../models.js"></script>
+	<script src="../webMIDIApi.js"></script>
+	<script src="kanjira-acmp1.js" defer></script>
+	
+	<script>
+
+/*(function init(g){	
+  debugger;
+
+//;
+
+  }(window));*/
+  
+  
+/*  window.onload=function(){
+  	
+  };*/
+  
+
+
+</script>
+
+	
+</head>
+<body>
+
+<textarea id="mridangam_patterns" rols="20" cols="20"  >  </textarea>
+Lead percussionist strokes (tha, the, thom, nam, dhim, ki, gumki) <br> </br>
+
+<textarea id="kanjira_patterns" rols="20" cols="20" >  </textarea> 
+Second percussionist strokes( tha, the gum or gumki) <br> 
+
+<!-- Controllers for lead and accompaniment-->
+
+<!-- Tempo -->
+<input type="text" id="tempo" value="68"> Tempo </input> <br> </br>
+
+<!-- Volume -->
+<input type="range" min="0.6" max="3.0" step="0.4" id="lead_Volume"> Lead volume Control </input> <br> </br>
+
+<input type="range" min="0.6" max="2.0" step="0.4" id="acmp_Volume" value="1.0"> Accompaniment volume control </input> <br> </br>
+
+<input type="range" min="0.6" max="3.0" step="0.4" id="mel_Volume"> Melody volume control </input> <br> </br>
+
+<button id="midiInput"> Midi Input </button> 
+<button id="keyboardInput"> Keyboard Input </button> <br> </br>
+
+<button id="play" onclick="playKanjira()"> Start playing </button> 
+<button id="stop"> Stop playing </button> <br> </br>
+
+<!-- Playback 
+<button id="play" > Play stroke </button>-->
+
+<input type="text" id="track" value="ranganayakam-training"> Track </input> <br> </br>
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,875 @@
+
+var kanjira_patterns = [["ta","tum","tumki","."],["ta tum", "tum ta","ta te","ta.",".ta","te.",".te","tum.",".tum"],["ta thum thum ta"],["ta tumki ta tumki"],["tumki. tumki. ta thum thum ta"],["ta ta thum thum ta thum thum ta"]];
+
+	// Some helpers for the demos.
+var steller = org.anclab.steller;       // Alias for namespace.
+var util = steller.Util;
+
+var AC = new webkitAudioContext();      // Make an audio context.
+var src = AC.createBufferSource();
+var sh = new steller.Scheduler(AC);     // Create a scheduler and start it running.
+sh.running = true;
+var models = steller.Models(sh);
+var spaceVar = 0;
+
+var wavs = ['ta', 'te', 'tum','tumki','thum', 'tha','thi','thom','num','dhin','dheem','dham','ri','tham','bheem','jambupathe','sarasasama','emani','chetashri'];
+var sounds = {};
+	
+	var leadVolume= 1.0, acmpVolume=1.0, melVolume = 1.0, delay_range=0.03,tempo,accomp_start,tala=1,accomp_flag = 0,kanjira_start=4,input=null, mridangam_in = null,play_on=0;
+
+var generic=1, interval, intonation, duration = 8, strokeDensity,accent,gap,dur_left, genericcity = 1, accomp;
+
+
+	
+	document.getElementById('lead_Volume').addEventListener( "change", function(){
+		leadVolume = document.getElementById("lead_Volume").value;
+	},false); 
+		document.getElementById('acmp_Volume').addEventListener( "change", function(){
+		acmpVolume = document.getElementById("acmp_Volume").value;
+	}); 	
+	
+	document.getElementById('mel_Volume').addEventListener( "change", function(){
+		melVolume = document.getElementById("acmp_Volume").value;
+	}); 	
+
+	
+document.getElementById('tempo').addEventListener( "change", function(){		
+		tempo = document.getElementById("tempo").value;
+		//set delay range to 30ms
+		delay_range = (2 *tempo )/ 600;
+	}); 
+
+
+
+
+
+//accompaniment selection controls
+
+
+var play_pattern = document.getElementById('play');			
+play_pattern.addEventListener("click", playKanjira , true);
+
+
+
+function init_vars(){
+	//initialize tempo, volume, etc..
+			leadVolume = document.getElementById("lead_Volume").value;
+			acmpVolume = document.getElementById("acmp_Volume").value;
+			tempo = document.getElementById("tempo").value;
+//					kanjira_start = document.getElementById("accomp_start").value;
+			
+
+		song = document.getElementById("track").value;
+		
+		wavs.push(song);
+		// will result in the wavs all being loaded in parallel.
+	var loader = sh.fork(wavs.filter(function (w) { return w !== ','; }).map(function (w) {
+			return (sounds[w] = sh.models.sample('../audio/' + w + '.wav').connect()).load;
+		    }));
+
+		sh.play(loader);
+		// Make an action which when played like sh.play(action)
+		
+}
+
+function playKanjira(){
+    sh.running = true;
+    //debugger;
+    var genericcity = parseFloat(document.getElementById("genericcity").value);
+    //sh.play(sounds["chetashri"].trigger(melVolume));
+    kanjira(genericcity);
+    
+}
+
+//var kanjira = ( function (){
+
+function kanjira(generic){
+	
+    var currentComposition = sh.delay(1.0);
+    var track_delay = parseFloat(document.getElementById("track_delay").value);
+
+	/*	var times = 4;
+		if(generic == 1 || generic ==  2){
+		times = 4;
+		}
+		else if(generic == 3){times = 2;}
+		else {times = 1;}
+
+		var stroke = combine_track(generic);
+		var strokeSeq = stroke[0];
+		var strokeTempo = stroke[1];
+		var strokeAccent = stroke[2];*/
+	
+    var pause  = 2, speed = 0, avarthanam = 1, dictionIndex = 0, aksharam = 0;
+
+    function modovr(num, modn ){
+	if(num < 0){
+	    num = modn + num;
+	}
+	return num % modn;
+    }
+    
+    var generator = sh.loop(sh.dynamic(function (clock) {
+
+	pause = parseFloat(document.getElementById("numRhythmAccents").value);
+	speed = parseFloat(document.getElementById("numStrokes").value);
+	tempo = parseFloat(document.getElementById("tempo").value);
+	
+	/*
+	// what is the sequence of pauses/speed/diction that makes sense
+	if(generic == 1){pause = modovr(pause, 2); speed = speed % 4;}
+	else if(generic == 2 || generic == 3){pause = modovr(pause, 4); speed = speed % 4;}
+	else {pause = modovr(pause, 4); speed = speed % 4;}*/
+	
+	aksharam++;
+	aksharam = aksharam % 8;
+	
+	//change diction once every avarthanam
+	if(aksharam == 0){dictionIndex = (dictionIndex+1) % 3;}
+
+	//document.getElementById("numRhythmAccents").value = pause;
+	//document.getElementById("numStrokes").value = speed;
+	var genericc = parseFloat(document.getElementById("genericcity").value);
+	var stroke = combine_track(genericc,pause,speed, dictionIndex);
+	//pause = pause-1;
+	//speed = speed + 1;
+	var strokeSeq = stroke[0];
+	var strokeTempo = stroke[1];
+	var strokeAccent = stroke[2];
+	
+	return sh.track( strokeSeq.map(function(s,index){
+	    try{
+		if(s == "."){
+		    return sh.delay(1.0/strokeTempo[index]);
+		}
+		
+		else{	
+		    return sh.track([sounds[s].trigger(strokeAccent[index]), sh.delay(1.0/strokeTempo[index])]);
+
+		}
+	    }
+	    catch(err){
+		debugger;
+	    }
+
+	}));
+
+    }));
+    //sh.delay(3.1 * 60/ tempo), 
+    sh.play( sh.track (sh.rate( sc * tempo/60),
+			generator));
+
+
+    function rhythmAccent(numPauses){
+	//var numPauses = parseFloat(document.getElementById("numRhythmAccents").value)
+	if( parseFloat(document.getElementById("enablePauses").value) == 1 ){
+		numPauses = parseFloat(document.getElementById("numRhythmAccents").value);
+	}
+	if(numPauses > 0){
+	    if(spaceVar > 0){ //loudness already defined
+		spaceVar++;
+	    }
+	    else spaceVar += 2;
+	}
+	var s = 1, w=0.5, speedDouble = 0.25;
+	var accent_arr = generateBaseValue(w);
+	var arr = generateRandArr(duration,numPauses,"rhythmAccent");
+	for(var i=0; i<duration; i++){
+	    if(arrElementCmp(i,arr)){
+		accent_arr[i] = 0;
+	    }
+	}
+	return accent_arr;
+    }
+
+    function loudnessAccent(){
+	var numAccents = parseFloat(document.getElementById("numLoudnessAccents").value), accent_arr = [];
+	if(numAccents > 0){
+	    spaceVar = 2;
+	}	
+	var s = 1, w=0.5, speedDouble = 0.25;
+	accent_arr = generateBaseValue(w);
+
+	var arr = generateRandArr(duration,numAccents,"loudnessAccent");
+	for(var i=0; i<duration; i++){
+	    if(arrElementCmp(i,arr)){
+		accent_arr[i] = s;
+	    }
+	    else{
+		accent_arr[i] = w;
+	    }
+	}
+	document.getElementById("loudnessAccent").value = "[" + findPosOccurences(1,accent_arr).join(",") + "]";	
+	return accent_arr;
+    }
+
+    function rlAccent(numPauses){
+	var rAccent = rhythmAccent(numPauses);
+	var lAccent = loudnessAccent();
+	
+	var loudnessAcct = lAccent.map(function(s,index){
+	    if(rAccent[index] == 0){
+		return 0;
+	    }
+	    else{
+		return s;
+	    }
+	});
+	
+	return loudnessAcct;
+    }
+    
+    function speedAccent(numStrokes,strokeAccent){
+//	var numStrokes = parseFloat(document.getElementById("numStrokes").value);
+
+	if( parseFloat(document.getElementById("enableSpeed").value) == 1 ){
+		numPauses = parseFloat(document.getElementById("numStrokes").value);
+	}
+	
+	
+	var arr = generateRandArr(duration,numStrokes,"speedAccent");
+	var tempStrokeTempo = "";
+	
+	for(var i=0; i<duration; i++){
+	    if(arrElementCmp(i,arr) && strokeAccent[i] != 0){
+		tempStrokeTempo += "[4,4],";
+	    }
+	    else{
+		tempStrokeTempo += 2 + ",";
+	    }
+	}	
+	return eval("[" + tempStrokeTempo + "]");
+    }
+    
+    //string manipulation
+    function speedChange(strokeSeq, strokeAccent,arr){
+	
+	var tempStrokeSeq = "", tempStrokeTempo = "", tempStrokeAccent = "", tempLoudnessAccent = "";
+	
+	arr = arr.map(function(s){
+	    return s-1;
+	});
+
+	for(var i=0; i<duration; i++){
+	    if(arrElementCmp(i,arr) && strokeAccent[i] != 0){
+		tempStrokeSeq += "ta te,";
+		tempStrokeAccent += "[0.5, 0.5],";
+	    }
+	    else{
+		tempStrokeSeq += strokeSeq[i] + ",";
+		tempStrokeAccent += strokeAccent[i] + ",";
+
+	    }
+	}
+	var temp = tempStrokeSeq.split(",");
+	temp = temp.splice(0,temp.length-1);
+	return [temp,eval( "[" + tempStrokeAccent + "]")];
+    }
+
+
+/*    function compareAccent(fAccent,tala){	
+
+	var normAccent = normalizeAccent(fAccent);
+	var normTala = normalizeAccent(tala);
+	var difference = 0;
+	
+	var diff = normTala.map(function(s,index){
+	    difference += Math.pow( s - normAccent[index], 2);
+	    return Math.abs( s - normAccent[index]);
+	});
+
+	console.log(difference);
+	return difference;
+    }*/
+
+    function patternDistanceMeasure(finalAccent, patternTempo, patternLoudness, tala){ // measures the distance between two patterns in terms of their accent and composition
+
+	
+	//finalAccent = [1,0,0,0,0,1,0,1]
+	//tala = [1,0,0,0,1,0,0,0]
+	//patternTempo = [2,2,2,2,[4,4],2,2,2]
+	//patternLoudness = [s,w,w,w,0,0,s,w,w,];
+
+	var cost, bin=1;
+
+	
+	// calculate how far is a pattern from the tala
+	// done on the final 1d Array, also get an equivalent 1d tala array
+
+	// tempo increase adds to the cost
+	var costTempo = patternTempo.map(function(s,i){
+	    if(patternTempo[i].length > 1){
+		return 1/2 - 1/patternTempo[i][0];
+	    }
+	    else{
+		return 0;
+	    }
+	});
+
+	//loudness increase adds to the cost
+	var costLoudness = patternTempo.map(function(s,i){
+	    return (patternLoudness[i] - tala[i]);// non weighted binary value 
+	});
+
+	//final distance is a measure of tempo increase, loudness increase provided there is accent on the beat
+	var distanceMeasure = finalAccent.map(function(s,index){
+	    return (s - tala[index]) * (costLoudness[index] + costTempo[index]);
+	});
+
+	var diff = distanceMeasure.reduce(sum);
+	
+	function sum(a,b){
+	    return a + b;
+	}
+
+	//console.log(diff);
+	return diff;	
+    }
+    
+    
+    function decide(fAccent,strokeSeq,speedAccent){
+
+	var fAccentStr = fAccent.join("");
+	var ele = fAccent[0];	
+	var posArr = findPosOccurences(1,fAccent);
+
+	if( numOccurences(ele,fAccent) == fAccent.length ){ // no differences in accent
+	    //console.log("generic");
+	    return 1;
+	}
+	else{
+	    //tala positions
+	    if( arrElementCmp(1,posArr) == 1 && arrElementCmp(5,posArr) == 1 ){
+		
+		if( fAccentStr == transpose(fAccent,4).join("")){ //symmetry
+		    if( arrElementCmp(3,posArr) == 1 && arrElementCmp(7,posArr) == 1  ){
+			
+			// symmetry due to 3 and 7 positions
+			if( speedAccent[3] == speedAccent[7]){
+			    //console.log("generic");
+			    return 1;
+			}
+			else{
+			    return 2;
+			}
+			
+		    }
+		    else if( !arrElementCmp(2,posArr) && !arrElementCmp(3,posArr) && !arrElementCmp(4,posArr) && !arrElementCmp(6,posArr) && !arrElementCmp(7,posArr) && !arrElementCmp(8,posArr) ){ //symmetry over all other values being 0
+			//console.log("generic");
+			return 1;
+		    }
+		    else{
+			//console.log("Non Generic but on the boundary between generic and non generic");
+			return 2;
+		    }
+		}
+		else if(arrElementCmp(3,posArr) == 1 || arrElementCmp(7,posArr) == 1){//accent on 3 or 7 but non symmetric
+		    return 2;
+		}
+		else{
+		    return 3;
+		}
+
+	    }
+	    else{
+		if( fAccentStr == transpose(fAccent,4).join("")){ //symmetry
+		    return 2;
+		}
+		else{
+		    //non generic boundary
+		    return 3;
+		}
+	    }
+	    
+
+	}
+	
+    }
+
+    function finalAccent(speedArr,loudnessArr,strokeSeq){
+	
+	//loudness arr : combination of strong, weak and 0, later should be modified as a function
+
+	//speedarr = [2,2,2,2,[4,4],2,2,2] (what does duration contribute to overall accent)
+	// loudness = [0.5, 0, 0, 0, 0.5,0,0,0] (what does loudness contribute to overall accent amplitude)
+	var s = 1, w=0.5, speedDouble =  parseFloat(document.getElementById("tate").value);
+
+	var accentSpeed = speedArr.map(function(s,index){
+	    if(s.length > 1){
+		return speedDouble;
+	    }
+	    else{
+		return 0;
+	    }
+	    
+	});
+	
+	var accentLoud = loudnessArr;
+	
+	var accent = accentLoud.map(function(s,index){
+	    return s + accentSpeed[index];
+	});
+	
+	//acconting for the weight of "Ta"
+	accent = strokeSeq.map(function(s,index){
+	    if(strokeSeq[index] == "ta"){
+		if(index == duration - 1){
+		    return accent[index] + parseFloat(document.getElementById("ta").value) - 0.1;
+		}
+		else{
+		    return accent[index] + parseFloat(document.getElementById("ta").value);
+		}
+	    }
+	    else if (strokeSeq[index].split(" ").length <= 1){
+		return accent[index] + parseFloat(document.getElementById(strokeSeq[index]).value);
+	    }
+	    else{
+		return accent[index];
+	    }
+
+	});
+	
+	return accent; //weighted accent structure
+	//output = [0.5, 0 , 0, [0.75,0.75],0,0,0] (what does duration contribute to overall accent)
+    }
+
+    function maxi(a,b,c){
+	if(a == b && a == c){
+	    return -1;
+	}
+	else{
+	    if(a > c && a>b){
+		return a;
+	    }
+	    else if(b>a && b>c){
+		return b;
+	    }
+	    else{
+		return c;
+	    }
+	}
+    }
+
+
+
+    function accentStructure(fAccent){
+	
+	//    var baseAccent = generateBaseValue(0.5);
+	
+	//fAccent = multilarray
+	//var weights = relLevel(fAccent); //single array of weights
+	//contrast enhancement
+
+	var w1 = parseFloat(document.getElementById("backWeight").value), w2 = parseFloat(document.getElementById("frontWeight").value);
+
+	var contrastedArr = fAccent.map(function(s,index,arr){
+	    return 1*s - w1*arr[modnum(index,1)] - w2*arr[(index+1)%duration];
+	});
+	
+	
+	var accentStruct = contrastedArr.map(function(s,index,arr){
+	    var max = maxi(s,arr[modnum(index,1)],arr[(index+1)%duration]);
+	    if( max != -1 && max == s){
+		return 1;
+	    }
+	    else{
+		return 0;
+	    }
+	});
+
+	return accentStruct;
+    }
+
+
+    function normalizeAccent(fAccent){
+	var num = fAccent[0], normAccent = [];
+	if(numOccurences(num,fAccent) == fAccent.length){ // no accents
+	    normAccent = fAccent.map(function(s,index){
+		return 0;
+	    });
+	}
+	else{
+	    //adding the difference between successive accent levels
+	    var sum = 0;
+	    for(var index=0;index<fAccent.length;index++){	
+		sum += Math.abs( fAccent[index]);
+	    }
+
+	    normAccent = fAccent.map(function(s,index){
+		return s/sum;
+	    });
+
+	}
+	return normAccent;	
+
+    }
+
+
+    function strokeSequence(index){
+
+	//three common solkattu used for accompaniment
+	var Solkattu = [["tum","ta","tum","ta","ta","tum","tum","ta"],["ta","ta","tum","tum","ta","tum","tum","ta"],["ta","tum","tum","ta","ta","tum","tum","ta"]];
+	var sol = [Solkattu[index], Solkattu[index].map(function(s){
+	    if(s == "tum"){
+		return "tumki";
+	    }
+	    else return s;
+	})];
+	return sol[wholeRand(0,1)];
+    }
+
+    function zeroAccent(){
+	var n1 = parseInt(document.getElementById("numLoudnessAccents").value);
+	var n2 = parseInt(document.getElementById("numStrokes").value);
+	var n3 = parseInt(document.getElementById("numRhythmAccents").value);
+	
+	if(n1 ==0 && n2 == 0 && n3 == 0){
+	    return 1;
+	}
+	else{
+	    return 0;
+	}
+    }
+
+    function combine_track(generic,pause,speed,dictionIndex){
+
+	//schedules to play the kanjira accompaniment - but if mridangam event is in, forks the track and adds that schedules that event too	
+
+	var strokeSeq= strokeSequence(dictionIndex);
+	var tempStrokeSeq = strokeSeq;
+	var strokeAccent=[], strokeTempo = [];
+	var timer = 0, loudnessAcc = [], fAccent;	
+	var space = Math.pow(4,8); // 8 spaces each having one of four possibilities
+	var weightedArr = [];
+
+	function recalGeneric(genericcity){
+	    if(genericcity == 4){genericcity = wholeRand(2,3);}
+	    return genericcity;
+	}
+	var genericcity = recalGeneric(generic);
+
+	do{
+	    
+	    if(zeroAccent()){
+		strokeSeq = strokeSequence(wholeRand(0,2));
+	    }
+	    else{
+		strokeSeq = tempStrokeSeq;
+	    }
+
+	    strokeTempo = generateBaseValue(2);
+	    strokeAccent = rlAccent(pause);
+	    strokeTempo = speedAccent(speed,strokeAccent);
+	    var tala = [1,0,0,0,1,0,0,0];	    
+	    
+	    //stub
+	    /*	    var s= 1.0, w= 0.5;
+		    var strokeAccent = [w,w,w,w,w,w,w,w];
+		    var strokeTempo = [2,2,2,2,2,2,2,2];
+		    var strokeSeq = ["ta","tumki","tumki","ta","ta","tumki","tumki","ta"];*/
+	    
+
+	    fAccent = finalAccent(strokeTempo,strokeAccent,strokeSeq);	    
+	    weightedArr = fAccent;
+	    var accentLevel = fAccent;
+	    fAccent = accentStructure(accentLevel);
+
+	    var satisfied = decide(fAccent,strokeSeq,strokeTempo);
+	    timer++;
+	    //satisfied != genericcity && 
+	    //patterns that satisfy the genericcity condition and the distance measure of zero with the tala are generic patterns
+	    //satisfied != genericcity || 
+	    // || patternDistanceMeasure(fAccent,strokeTempo,strokeAccent,tala) >=2
+	}while( (patternDistanceMeasure(fAccent,strokeTempo,strokeAccent,tala) > 0.75) && timer<1000);
+
+	document.getElementById("finalAccent").value = fAccent.join(" ");
+
+	if(timer >= 1000){
+	    //alert("change parameters and start generation again");
+	    //stop the whole thing
+	    //fail with a fall back pattern
+	    var s= 1.0, w= 0.5;
+	    strokeAccent = [w,w,w,w,w,w,w,w];
+	    strokeTempo = [2,2,2,2,2,2,2,2];
+	    strokeSeq = ["ta","tum","tum","ta","ta","tum","tum","ta"];
+
+	}	
+	else{
+
+	    // apply rhythm accent
+	    strokeSeq = strokeSeq.map( function(s,index){
+		if(strokeAccent[index] == 0){
+		    return ".";
+		}
+		else{
+		    return s;
+		}
+	    });
+	    var loudnessAccent = strokeAccent;
+	    var speedStroke  = speedChange(strokeSeq,strokeAccent,findPosOccurences([4,4],strokeTempo));
+	    strokeAccent = speedStroke[1];
+	    
+	    //strokeTempo = speedStroke[1];
+	    strokeSeq = speedStroke[0];	    
+	    //compareAccent(weightedArr,tala);
+	    var diff = patternDistanceMeasure(fAccent,strokeTempo,loudnessAccent,tala);
+	    console.log(diff);
+
+	    document.getElementById("kanjira_patterns").value = "[" + strokeSeq.join("|") + "]";		    
+	    document.getElementById("speedAccent").value = "[" + findPosOccurences([4,4],strokeTempo).join(",") + "]";	
+	    document.getElementById("rhythmAccent").value = "[" + findPosOccurences(0,strokeAccent).join(",") + "]";	
+	    
+	}
+	
+	strokeSeq = multiToSingleDimensionArray(strokeSeq);
+	strokeTempo = multiToSingleDimensionArray(strokeTempo);
+	strokeAccent = multiToSingleDimensionArray(strokeAccent);
+
+	var stroke = genericcityChange(generic, strokeSeq,strokeTempo,strokeAccent);
+	strokeSeq = stroke[0];
+	strokeTempo = stroke[1];
+	strokeAccent = stroke[2];
+
+	return [strokeSeq,strokeTempo,strokeAccent];	
+    }
+
+    function genericcityChange(generic, strokeSeq,strokeTempo,strokeAccent){
+
+	var sc = 1;    
+	if( generic == 4){ // 50% percentage of notes speed doubled
+	    sc = wholeRand(1,2);
+	}
+	else if(generic == 2 || generic == 3){ // 25% of notes speed doubled
+	    sc = wholeRand(1,4);
+	    if(sc % 2 == 1){ sc = sc % 2; }
+	    else{ sc = sc / 2;}
+	}
+/*	else{ // 33% of notes speed doubled
+	    sc = wholeRand(1,3);
+	    if( sc % 2 == 1){
+		sc = sc % 2;
+	    }
+	}*/
+	sc = 1;
+	var tempStrokeTempo = strokeTempo;
+	var tempStrokeAccent = strokeAccent;
+	var tempStroke = strokeSeq;
+	var st = Math.ceil(tempStrokeTempo.length/sc), ed = tempStrokeTempo.length;
+	for(i=st; i<ed; i++){
+	    strokeSeq.push(tempStroke[i]);
+	    strokeAccent.push(tempStrokeAccent[i]);
+	    strokeTempo.push(tempStrokeTempo[i]);
+	}
+	
+	strokeTempo = strokeTempo.map(function(s, index){
+	    if(index < ed){
+		return sc * s;
+	    }
+	    else{
+		
+		return s;
+	    }
+	});
+	return [strokeSeq,strokeTempo,strokeAccent];	
+    }
+
+}
+
+init_vars();
+
+//------------------ Common functions --------------------------//
+
+//generates whole random number between the given intervals
+function wholeRand(low,high){
+    return low + Math.floor( 0.5 + Math.random()*(high-low));
+}
+
+//returns 1 if element found in array and returns 0 if no element is found
+function arrElementCmp(element,array){
+    var compare = 0;
+    for(var index=0;index<array.length;index++){
+	if(element == array[index]){compare = 1;}
+    }
+    return compare;
+}
+
+//compares if one array is part of another array
+function arrCmp(mainArr,subArr){
+
+    var compare = 0;
+    if(subArr.length>1){
+	for(index = 0; index<mainArr.length; index++){
+	    if( mainArr[index].join("") == subArr.join("") ){
+		compare = 1;
+	    }
+	}
+    }    
+    return compare;
+}
+
+
+//returns number of occurences of an element in a array
+function numOccurences(ele,array){
+    var count = 0;
+    for(var index=0;index<array.length;index++){
+	if(ele == array[index]){
+	    count++;
+	}
+    }
+    return count;
+}
+
+//generates array with unique values if documentelement is absent
+function generateRandArr(duration, numValues, htmlelement){
+    var arr = [];
+//    var str = eval(document.getElementById(htmlelement).value); //accent array structure
+    var str;
+    if( !str ){
+	for(var i=0; i<numValues; i++){
+	    var acc = wholeRand(0,duration-1);
+	    if(arr.length ==0){
+		arr.push(acc);
+	    }
+	    else if( arrElementCmp(acc,arr) == 0 ){
+		arr.push(acc);
+	    }
+	    else{
+		while( arrElementCmp(acc,arr) == 1 ){
+		    acc = wholeRand(0,duration-1);
+		}
+ 		arr.push(acc);
+	    }
+
+	}
+    }
+    else{
+	str = str.map(function(s){
+	    return s-1;
+	});
+	arr = str;
+    }
+    
+    //document.getElementById(htmlelement).value = arr.join(" ");
+    return arr;
+}
+
+//returns single dimension array from multidimensional array
+function multiToSingleDimensionArray( multiSeq ){ 
+    var singleSeq = [], arr2 = [];
+    for(var i=0; i<multiSeq.length; i++){
+	var arr = multiSeq[i];
+	if(!arr.length){
+	    singleSeq.push(multiSeq[i]);	    
+	}
+	else{
+	    try{
+		arr2 = arr.split(" ");
+	    }
+	    catch(err){
+		arr2 = arr;
+	    }
+	    for(var i2=0;i2<arr2.length;i2++){
+		singleSeq.push(arr2[i2]);
+	    }	    
+	}
+    }
+    
+    return singleSeq;
+}
+
+//generate array with base value
+function generateBaseValue(baseValue){
+    var arr = [];
+    for(var i=0; i<duration; i++){
+	arr.push(baseValue);
+    }
+    return arr;
+}
+
+
+//find position of occurences of element in an array
+function findPosOccurences(ele,arr){
+    
+    var posArr = [];
+    for(var i=0;i<arr.length;i++){
+	var arele = arr[i];
+	if(arele.length && ele.length){
+	    if(arele.join("") == ele.join("")){
+		posArr.push(i+1);
+	    }
+	}
+	else{
+	    if(arr[i] == ele){
+		posArr.push(i+1);
+	    }
+	}
+
+    }
+    return posArr;
+
+}
+
+//returns num - sub % duration
+function modnum(num,sub){
+
+    if(num - sub < 0){
+	return duration + (num - sub)%duration;
+    }
+    else{
+	return (num - sub)%duration;
+    }
+    
+}
+
+//transposing
+function transpose(arr, transCounter){
+    var transarr = arr.map(function(s,index){
+	return arr[ (index+transCounter) % duration];
+    });
+    return transarr;
+}
+
+
+function transposeIndex(fAccent){
+    
+    var index = -1;
+    for(var transInd = 1; transInd < duration; transInd++){
+	if(fAccent.join("") == transpose(fAccent,transInd).join("")){
+	    return transInd;
+	}
+    }
+    return index;
+}
+
+
+
+
+
+var sc = 1;    
+if( generic == 4){
+    sc = wholeRand(1,3);
+    if(sc == 3){
+	sc = sc-1;
+    }
+    else if(generic == 2 || generic == 3){
+	sc = wholeRand(1,3);
+	if( sc % 2 == 1){
+	    sc = sc % 2;
+	}
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
