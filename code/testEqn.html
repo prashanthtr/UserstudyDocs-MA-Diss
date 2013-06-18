@@ -1,0 +1,166 @@
+
+
+<html>
+<head>
+  	<script src="steller.js"></script>
+	<script src="models.js"></script>
+	<script src="testEqn.js" defer></script>		
+</head>
+<body>  
+
+
+<div id="main" name="main" title="Performance display" style="position: relative; left:400; top:100">
+
+<div id="controllers" name="controllers" title="Controllers for lead and accompaniment" style="position: absolute; left:-270;border:1px solid black">
+
+<!-- Controllers for lead and accompaniment-->
+
+<!-- Volume -->
+Lead volume &nbsp &nbsp &nbsp  <input type="range" min="0.6" max="3.0" step="0.4" id="lead_Volume"> </input> <br> </br>
+
+Accompaniment &nbsp <input type="range" min="0.6" max="2.0" step="0.4" id="acmp_Volume"> </input> <br> volume <br>
+
+Melody volume &nbsp <input type="range" min="0.6" max="3.0" step="0.4" id="mel_Volume">  </input> <br> </br>
+
+Control1 <input type="text" id="ctrl1" value="0"> </input> <br> 1.manual 0.auto </br>
+
+Control2 <input type="text" id="ctrl2" value="0"> </input> <br> control knobs </br>
+
+</div>
+
+<div id="master" name="master controller" title="Lead and Accompaniment display" style="position:absolute;left:0" >
+
+Lead percussionist strokes <br> (tha, the, thom, nam, dhim, ki,<br> gumki) <br><textarea id="mridangam" rols="20" cols="20" >  </textarea> <br>
+
+Mridangam Accent <br> 
+<textarea id="mridangamAccent" rols="20" cols="20" >  </textarea> <br>
+
+Second percussionist strokes <br>(tha, the gum or gumki) <br> 
+<textarea id="kanjira" rols="20" cols="20" >  </textarea> <br>
+
+Second percussionist Accent <br>
+<textarea id="kanjiraAccent" rols="20" cols="10" >  </textarea> <br>
+
+Tala <br>
+<textarea id="ref" rols="20" cols="20" >  </textarea> 
+ <br> 
+
+tala Accent <br>
+<textarea id="refAccent" rols="20" cols="10" >  </textarea>
+ <br> 
+
+
+
+
+
+<button id="play"> Start playing </button> 
+<button id="stop"> Stop playing </button> <br> </br>
+
+<!-- Tempo -->
+<input type="text" id="tempo" value="110"> Tempo </input> <br> 
+<input type="text" id="duration" value="16"> Duration </input> <br> 
+<input hidden type="text" id="track_delay" value="12"> </input> <br> 
+
+</div>
+
+
+<div id="settings" name="Pattern settings" title="Settings for generic patterns" style="position: absolute; left:250;border:1px solid black">
+
+
+<!-- generic or not -->
+Generic <input type="range" min="1" max="4" step="1" id="generic">   </input> <br> to Nongeneric <br>
+
+Mridangam Range Down <input type="text" id="rangeDown" value="0" > Range up <input type="text" id="rangeUp" value="1" >  <br> <br>
+
+Kanjira Range Down <input type="text" id="kanjiraRangeDwn" value="0" > Range up <input type="text" id="kanjiraRangeUp" value="1" >  <br> <br>
+
+<!-- Loudness Accent -->
+Reference Loudness Accent <input type="text" id="refLoud" value="[]" > <br> (eg: Accent at 1,4 and 5th notes -> [1,4,5] ) <br>
+
+<!-- Loudness Accent -->
+Reference Loudness Accent <input type="text" id="refRest" value="[]" > <br> (eg: Accent at 1,4 and 5th notes -> [1,4,5] ) <br>
+
+
+<!-- Speed accent  -->
+Reference Speed Accent  <input type="text" id="refSpeed" value="[]"> </input>  <br> 
+(eg: Accent at 1,4 and 5th notes -> [1,4,5] ) <br>
+
+<br> <br>
+
+<!-- Loudness Accent -->
+
+Loudness Accent <input type="text" id="targetLoud" > </textarea> <br> (eg: Accent at 1,4 and 5th notes -> [1,4,5] ) <br>
+
+<!-- Loudness Accent 
+Number of <input type="text" id="numLoud" value="4"> Loudness Accents </input> <br> -->
+
+Number of loudness <input type="range" min="0" max="12" step="1" id="numLoud">  <br> Accents </input>  <br>
+
+<!-- rhythm Accents  -->
+Rhythm accent <input type="text" id="targetRest"> </input>  <br>
+(eg: Accent at 1,4 and 5th notes -> [1,4,5] ) <br>
+
+<!-- rhythm Accents  
+Number of rhythm <input type="text" id="numRest" value="4">  <br> Accents </input>  <br> -->
+
+Number of rhythm <input type="range" min="0" max="12" step="1" id="numRest">  <br> Accents </input>  <br>
+
+
+<!-- Speed accent  -->
+Speed Double Accent  <input type="text" id="targetSpeed"> </input>  <br> 
+(eg: Accent at 1,4 and 5th notes -> [1,4,5] ) <br>
+
+
+Number of speeddbl <input type="range" min="0" max="12" step="1" id="numStrokes">  <br> Accents </input>  <br>
+
+<!-- Speed accent  
+Number of Strokes <input type="text" id="numStrokes" value="4">  <br>speed double or quadruple </input>  -->
+
+<!-- offset-->
+Offset <input type="text" id="offset" value="0"> from start of pattern <br> </input>  
+
+
+<!-- Accent 
+<input type="range" min="1" max="5" step="2" id="accent"> Accent structure (1,3 or 5) </input> <br> </br> -->
+
+</div>
+
+<div id="settings" name="Enable/disable settings" title="Settings for generic patterns" style="position: absolute; left:-270;top:200;border:1px solid black">
+
+<br>
+
+Ta accent <input type="text" id="ta" value="0.6"> </input>  <br>
+Tum accent <input type="text" id="tum" value="0.2"> </input>  <br>
+Tumki <input type="text" id="tumki" value="0.8"> </input>  <br>
+Te accent <input type="text" id="te" value="0.2"> </input>  <br>
+Tate accent <input type="text" id="tate" value="0.6"> </input>  <br>
+Tata accent <input type="text" id="tata" value="0.3"> </input>  <br>
+Next note <input type="text" id="frontWeight" value="0.67"> </input>  <br>
+Prev note <input type="text" id="backWeight" value="0.33"> </input>  <br>
+
+Num accent <input type="text" id="num" value="0.8"> </input>  <br>
+Dhin accent <input type="text" id="dhin" value="0.3"> </input>  <br>
+Tha accent <input type="text" id="tha" value="0.2"> </input>  <br>
+Thi accent <input type="text" id="thi" value="0.2"> </input>  <br>
+Thom accent <input type="text" id="thom" value="0.2"> </input>  <br>
+Tari accent <input type="text" id="thiri" value="0.4"> </input>  <br>
+clap accent <input type="text" id="clap" value="0.3"> </input>  <br>
+Symmetry <input type="text" id="symm" value="10"> </input>  <br>
+
+Mod rests <input type="range" min="1" max="12" step="1" id="modRest">  </input>  <br>
+Mod Loudness <input type="range" min="1" max="12" step="1" id="modLoud">  </input>  <br>
+Mod speed <input type="range" min="1" max="12" step="1" id="modSpeed">  </input>  <br>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</body>
+</html>
+
+
